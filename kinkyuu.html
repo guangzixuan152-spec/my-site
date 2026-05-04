@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>緊急・トラブル対応 | 外国人サポートセンター</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root { --red:#c0392b; --red2:#e74c3c; --white:#f9f4ef; --ink:#1a1a1a; --gray:#5a5a5a; --light:#ede7df; --accent:#d4a843; }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Noto Sans JP',sans-serif; background:var(--white); color:var(--ink); }
+    [data-lang] { display:none; }
+    .lang-ja [data-lang="ja"], .lang-zh [data-lang="zh"], .lang-en [data-lang="en"] { display:revert; }
+    .lang-switcher { display:flex; gap:0.3rem; }
+    .lang-btn { padding:0.28rem 0.65rem; background:transparent; border:1px solid #555; color:#aaa; border-radius:3px; font-size:0.72rem; cursor:pointer; transition:all 0.2s; font-family:'Noto Sans JP',sans-serif; }
+    .lang-btn:hover { border-color:var(--red2); color:var(--white); }
+    .lang-btn.active { background:var(--red); border-color:var(--red); color:#fff; }
+    nav { display:flex; justify-content:space-between; align-items:center; padding:1rem 5vw; background:var(--ink); position:sticky; top:0; z-index:100; }
+    .nav-logo { font-family:'Noto Serif JP',serif; font-size:1.1rem; color:var(--white); text-decoration:none; }
+    .nav-logo span { color:var(--red2); }
+    .nav-right { display:flex; align-items:center; gap:1.5rem; }
+    .back-btn { display:inline-flex; align-items:center; color:#ccc; text-decoration:none; font-size:0.85rem; transition:color 0.2s; }
+    .back-btn:hover { color:var(--white); }
+    .back-btn::before { content:'← '; }
+    .page-hero { background:var(--ink); padding:4rem 8vw 3rem; border-bottom:3px solid var(--red); }
+    .page-hero .tag { font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
+    .page-hero h1 { font-family:'DM Serif Display',serif; font-size:clamp(2rem,5vw,3.5rem); color:var(--white); line-height:1.2; }
+    .page-hero p { margin-top:1rem; color:#aaa; font-size:0.95rem; max-width:560px; line-height:1.8; }
+
+    /* Emergency number cards */
+    .sos-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1.5rem; }
+    .sos-card { background:var(--ink); color:var(--white); border-radius:4px; padding:1.5rem; text-align:center; border:2px solid var(--red); }
+    .sos-card .sos-num { font-family:'DM Serif Display',serif; font-size:2.8rem; color:var(--red2); line-height:1; margin-bottom:0.5rem; }
+    .sos-card h4 { font-size:0.95rem; margin-bottom:0.3rem; }
+    .sos-card p { font-size:0.8rem; color:#aaa; }
+
+    main { max-width:860px; margin:0 auto; padding:4rem 5vw; }
+    .content-section { margin-bottom:3.5rem; padding-bottom:3.5rem; border-bottom:1px solid rgba(0,0,0,0.08); }
+    .content-section:last-child { border-bottom:none; }
+    .section-num { display:inline-block; background:var(--red); color:#fff; font-size:0.7rem; padding:0.2rem 0.6rem; border-radius:2px; margin-bottom:0.8rem; }
+    .content-section h2 { font-family:'Noto Serif JP',serif; font-size:1.4rem; margin-bottom:1rem; }
+    .content-section p { font-size:0.92rem; line-height:1.9; color:var(--gray); margin-bottom:1rem; }
+    .steps { display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem; }
+    .step-item { display:flex; gap:1.2rem; align-items:flex-start; background:var(--light); border-radius:4px; padding:1.2rem 1.5rem; }
+    .step-badge { flex-shrink:0; width:32px; height:32px; background:var(--red); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; }
+    .step-item h4 { font-size:0.95rem; margin-bottom:0.3rem; }
+    .step-item p { font-size:0.85rem; color:var(--gray); margin:0; line-height:1.6; }
+    .info-table { width:100%; border-collapse:collapse; margin-top:1.2rem; font-size:0.88rem; }
+    .info-table th, .info-table td { padding:0.8rem 1rem; text-align:left; border-bottom:1px solid rgba(0,0,0,0.07); }
+    .info-table th { background:var(--ink); color:var(--white); font-weight:500; font-size:0.8rem; }
+    .info-table tr:nth-child(even) td { background:var(--light); }
+    .note { background:#fff8e1; border-left:4px solid var(--accent); border-radius:2px; padding:1rem 1.2rem; font-size:0.87rem; color:#6d5a00; line-height:1.7; margin-top:1.2rem; }
+    .note strong { color:#5a4800; }
+    .alert-note { background:#fdecea; border-left:4px solid var(--red); border-radius:2px; padding:1rem 1.2rem; font-size:0.87rem; color:#7b1a1a; line-height:1.7; margin-top:1.2rem; }
+    .alert-note strong { color:#5c0f0f; }
+    .cta-box { background:var(--ink); color:var(--white); border-radius:4px; padding:2.5rem; text-align:center; margin-top:3rem; }
+    .cta-box h3 { font-family:'DM Serif Display',serif; font-size:1.6rem; margin-bottom:0.5rem; }
+    .cta-box p { color:#aaa; font-size:0.88rem; margin-bottom:1.5rem; }
+    .cta-btn { display:inline-block; padding:0.9rem 2.5rem; background:var(--red); color:#fff; text-decoration:none; border-radius:3px; font-size:0.9rem; transition:background 0.2s; }
+    .cta-btn:hover { background:var(--red2); }
+    footer { background:var(--ink); color:#666; text-align:center; padding:2rem; font-size:0.8rem; }
+    footer span { color:var(--red2); }
+  </style>
+</head>
+<body class="lang-ja">
+
+<nav>
+  <a class="nav-logo" href="sp.html"><span>外</span>国人サポート</a>
+  <div class="nav-right">
+    <a class="back-btn" href="sp.html"><span data-lang="ja">トップへ戻る</span><span data-lang="zh">返回首页</span><span data-lang="en">Back to Top</span></a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-target="ja" onclick="setLang('ja')">JP</button>
+      <button class="lang-btn" data-target="zh" onclick="setLang('zh')">中</button>
+      <button class="lang-btn" data-target="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <p class="tag">Emergency & Trouble</p>
+  <h1>🆘
+    <span data-lang="ja">緊急・トラブル対応</span>
+    <span data-lang="zh">紧急情况应对</span>
+    <span data-lang="en">Emergency & Trouble Support</span>
+  </h1>
+  <p>
+    <span data-lang="ja">災害・犯罪・事故など、いざというときに備えて必要な情報をまとめました。困ったときはすぐにご相談ください。</span>
+    <span data-lang="zh">针对灾害、犯罪、事故等紧急情况，我们整理了必要的应对信息。遇到困难请立即联系我们。</span>
+    <span data-lang="en">We've compiled essential information for emergencies like disasters, crime, and accidents. Don't hesitate to contact us when trouble arises.</span>
+  </p>
+</div>
+
+<main>
+
+  <!-- Emergency numbers -->
+  <div class="content-section">
+    <span class="section-num">01</span>
+    <h2>
+      <span data-lang="ja">緊急連絡先一覧</span>
+      <span data-lang="zh">紧急联系电话一览</span>
+      <span data-lang="en">Emergency Contact Numbers</span>
+    </h2>
+    <p>
+      <span data-lang="ja">緊急時にすぐ使える電話番号です。スマートフォンに登録しておきましょう。</span>
+      <span data-lang="zh">紧急情况下可立即使用的电话号码。请提前存入手机。</span>
+      <span data-lang="en">Phone numbers to use immediately in an emergency. Save these to your smartphone now.</span>
+    </p>
+
+    <div class="sos-grid">
+      <div class="sos-card">
+        <div class="sos-num">110</div>
+        <h4><span data-lang="ja">警察（事件・事故）</span><span data-lang="zh">警察（案件·事故）</span><span data-lang="en">Police (Crime / Accident)</span></h4>
+        <p><span data-lang="ja">24時間対応</span><span data-lang="zh">24小时对应</span><span data-lang="en">24 hours</span></p>
+      </div>
+      <div class="sos-card">
+        <div class="sos-num">119</div>
+        <h4><span data-lang="ja">救急・消防</span><span data-lang="zh">急救·消防</span><span data-lang="en">Ambulance / Fire</span></h4>
+        <p><span data-lang="ja">24時間対応</span><span data-lang="zh">24小时对应</span><span data-lang="en">24 hours</span></p>
+      </div>
+      <div class="sos-card">
+        <div class="sos-num">#7119</div>
+        <h4><span data-lang="ja">救急安心センター</span><span data-lang="zh">急救咨询中心</span><span data-lang="en">Medical Advice Line</span></h4>
+        <p><span data-lang="ja">受診の相談（大阪）</span><span data-lang="zh">就医咨询（大阪）</span><span data-lang="en">Hospital advice (Osaka)</span></p>
+      </div>
+      <div class="sos-card">
+        <div class="sos-num">#8000</div>
+        <h4><span data-lang="ja">子ども医療相談</span><span data-lang="zh">儿童医疗咨询</span><span data-lang="en">Child Medical Advice</span></h4>
+        <p><span data-lang="ja">小児救急の相談</span><span data-lang="zh">儿科急救咨询</span><span data-lang="en">Pediatric emergency advice</span></p>
+      </div>
+    </div>
+
+    <div class="alert-note">
+      <span data-lang="ja"><strong>📞 外国語で110番・119番を利用する場合：</strong>電話すると「何語ですか？」と聞かれます。言語名を答えると通訳を介して対応してもらえます。</span>
+      <span data-lang="zh"><strong>📞 用外语拨打110、119时：</strong>接通后会询问"您说什么语言？"，回答语言名称后可通过翻译进行沟通。</span>
+      <span data-lang="en"><strong>📞 Calling 110 or 119 in a foreign language:</strong> You'll be asked "What language do you speak?" An interpreter will be connected to assist you.</span>
+    </div>
+  </div>
+
+  <!-- Disaster -->
+  <div class="content-section">
+    <span class="section-num">02</span>
+    <h2>
+      <span data-lang="ja">災害時の対応</span>
+      <span data-lang="zh">灾害时的应对方法</span>
+      <span data-lang="en">What to Do in a Disaster</span>
+    </h2>
+    <p>
+      <span data-lang="ja">日本は地震・台風・大雨などの自然災害が多い国です。日頃から避難場所や連絡方法を確認しておきましょう。</span>
+      <span data-lang="zh">日本是地震、台风、暴雨等自然灾害频发的国家。请平时就确认好避难场所和联络方式。</span>
+      <span data-lang="en">Japan is prone to earthquakes, typhoons, and heavy rain. Know your evacuation site and emergency contacts in advance.</span>
+    </p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-badge">🏃</div>
+        <div>
+          <h4><span data-lang="ja">避難場所を確認する</span><span data-lang="zh">确认避难场所</span><span data-lang="en">Know Your Evacuation Site</span></h4>
+          <p><span data-lang="ja">お住まいの市区町村のハザードマップで、最寄りの避難所を事前に確認しておいてください。</span><span data-lang="zh">请通过居住地市区町村的灾害风险地图，提前确认最近的避难所。</span><span data-lang="en">Check your local government's hazard map to find the nearest evacuation shelter in advance.</span></p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-badge">📦</div>
+        <div>
+          <h4><span data-lang="ja">防災グッズを準備する</span><span data-lang="zh">准备防灾用品</span><span data-lang="en">Prepare an Emergency Kit</span></h4>
+          <p><span data-lang="ja">水（3日分）・食料・薬・在留カード・パスポートのコピーなどを非常用袋にまとめておきましょう。</span><span data-lang="zh">请将水（3天份）、食物、药品、在留卡、护照复印件等装入应急袋备用。</span><span data-lang="en">Prepare an emergency bag with water (3-day supply), food, medicine, residence card, and passport copies.</span></p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-badge">📡</div>
+        <div>
+          <h4><span data-lang="ja">多言語防災情報を活用する</span><span data-lang="zh">利用多语言防灾信息</span><span data-lang="en">Use Multilingual Disaster Info</span></h4>
+          <p><span data-lang="ja">NHKワールドやYahoo!防災速報などで、多言語の緊急情報を受け取ることができます。</span><span data-lang="zh">可通过NHK World、Yahoo!防灾速报等渠道接收多语言紧急信息。</span><span data-lang="en">NHK World and Yahoo! Disaster Alert provide multilingual emergency information during disasters.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Crime -->
+  <div class="content-section">
+    <span class="section-num">03</span>
+    <h2>
+      <span data-lang="ja">犯罪・トラブルに遭ったとき</span>
+      <span data-lang="zh">遭遇犯罪或纠纷时</span>
+      <span data-lang="en">If You Encounter Crime or Trouble</span>
+    </h2>
+    <p>
+      <span data-lang="ja">詐欺・盗難・ハラスメントなどに遭った場合は、一人で悩まずに警察や当センターにご相談ください。</span>
+      <span data-lang="zh">如果遭遇诈骗、盗窃、骚扰等情况，请不要独自烦恼，向警察或本中心寻求帮助。</span>
+      <span data-lang="en">If you experience fraud, theft, or harassment, don't struggle alone. Contact the police or our center right away.</span>
+    </p>
+
+    <table class="info-table">
+      <tr>
+        <th><span data-lang="ja">トラブルの種類</span><span data-lang="zh">纠纷种类</span><span data-lang="en">Type of Trouble</span></th>
+        <th><span data-lang="ja">相談窓口</span><span data-lang="zh">咨询窗口</span><span data-lang="en">Where to Go</span></th>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">詐欺・盗難</span><span data-lang="zh">诈骗·盗窃</span><span data-lang="en">Fraud / Theft</span></td>
+        <td><span data-lang="ja">警察（110番）</span><span data-lang="zh">警察（110）</span><span data-lang="en">Police (110)</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">DV・ハラスメント</span><span data-lang="zh">家庭暴力·骚扰</span><span data-lang="en">Domestic Violence / Harassment</span></td>
+        <td><span data-lang="ja">配偶者暴力相談支援センター</span><span data-lang="zh">配偶者暴力咨询支援中心</span><span data-lang="en">DV Support Center</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">消費者トラブル</span><span data-lang="zh">消费纠纷</span><span data-lang="en">Consumer Disputes</span></td>
+        <td><span data-lang="ja">消費生活センター（188番）</span><span data-lang="zh">消费生活中心（188）</span><span data-lang="en">Consumer Affairs Center (188)</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">差別・人権侵害</span><span data-lang="zh">歧视·人权侵害</span><span data-lang="en">Discrimination / Human Rights</span></td>
+        <td><span data-lang="ja">法務局（0570-003-110）</span><span data-lang="zh">法务局（0570-003-110）</span><span data-lang="en">Legal Affairs Bureau (0570-003-110)</span></td>
+      </tr>
+    </table>
+
+    <div class="note">
+      <span data-lang="ja"><strong>💡 ポイント：</strong>当センターでも相談を受け付けています。まずは気軽にご連絡ください。一緒に解決策を考えます。</span>
+      <span data-lang="zh"><strong>💡 要点：</strong>本中心也接受相关咨询。请先随时联系我们，我们将一起寻找解决方案。</span>
+      <span data-lang="en"><strong>💡 Tip:</strong> Our center also accepts consultations. Contact us first — we'll work through it together.</span>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3><span data-lang="ja">困ったときはすぐご連絡を</span><span data-lang="zh">遇到困难请立即联系我们</span><span data-lang="en">In Trouble? Contact Us Now</span></h3>
+    <p><span data-lang="ja">一人で抱え込まずに、まずご相談ください。迅速に対応します。</span><span data-lang="zh">不要一个人扛着，请先联系我们，我们将迅速应对。</span><span data-lang="en">Don't face it alone. Reach out first and we'll respond quickly.</span></p>
+    <a class="cta-btn" href="sp.html#contact"><span data-lang="ja">今すぐ相談する</span><span data-lang="zh">立即咨询</span><span data-lang="en">Contact Us Now</span></a>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    <span data-lang="ja">© 2025 外国人サポートセンター kcgi — Made with <span>♥</span> for our international community</span>
+    <span data-lang="zh">© 2025 外国人サポートセンター kcgi — 用 <span>♥</span> 服务每一位在日外国人</span>
+    <span data-lang="en">© 2025 Foreign Residents Support Center, kcgi — Made with <span>♥</span> for our international community</span>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.target === lang));
+    localStorage.setItem('preferred-lang', lang);
+  }
+  const saved = localStorage.getItem('preferred-lang');
+  if (saved) setLang(saved);
+</script>
+</body>
+</html>
