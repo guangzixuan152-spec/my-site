@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>教育・日本語学習 | 外国人サポートセンター</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root { --red:#c0392b; --red2:#e74c3c; --white:#f9f4ef; --ink:#1a1a1a; --gray:#5a5a5a; --light:#ede7df; --accent:#d4a843; }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Noto Sans JP',sans-serif; background:var(--white); color:var(--ink); }
+    [data-lang] { display:none; }
+    .lang-ja [data-lang="ja"], .lang-zh [data-lang="zh"], .lang-en [data-lang="en"] { display:revert; }
+    .lang-switcher { display:flex; gap:0.3rem; }
+    .lang-btn { padding:0.28rem 0.65rem; background:transparent; border:1px solid #555; color:#aaa; border-radius:3px; font-size:0.72rem; cursor:pointer; transition:all 0.2s; font-family:'Noto Sans JP',sans-serif; }
+    .lang-btn:hover { border-color:var(--red2); color:var(--white); }
+    .lang-btn.active { background:var(--red); border-color:var(--red); color:#fff; }
+    nav { display:flex; justify-content:space-between; align-items:center; padding:1rem 5vw; background:var(--ink); position:sticky; top:0; z-index:100; }
+    .nav-logo { font-family:'Noto Serif JP',serif; font-size:1.1rem; color:var(--white); text-decoration:none; }
+    .nav-logo span { color:var(--red2); }
+    .nav-right { display:flex; align-items:center; gap:1.5rem; }
+    .back-btn { display:inline-flex; align-items:center; color:#ccc; text-decoration:none; font-size:0.85rem; transition:color 0.2s; }
+    .back-btn:hover { color:var(--white); }
+    .back-btn::before { content:'← '; }
+    .page-hero { background:var(--ink); padding:4rem 8vw 3rem; border-bottom:3px solid var(--red); }
+    .page-hero .tag { font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
+    .page-hero h1 { font-family:'DM Serif Display',serif; font-size:clamp(2rem,5vw,3.5rem); color:var(--white); line-height:1.2; }
+    .page-hero p { margin-top:1rem; color:#aaa; font-size:0.95rem; max-width:560px; line-height:1.8; }
+    main { max-width:860px; margin:0 auto; padding:4rem 5vw; }
+    .content-section { margin-bottom:3.5rem; padding-bottom:3.5rem; border-bottom:1px solid rgba(0,0,0,0.08); }
+    .content-section:last-child { border-bottom:none; }
+    .section-num { display:inline-block; background:var(--red); color:#fff; font-size:0.7rem; padding:0.2rem 0.6rem; border-radius:2px; margin-bottom:0.8rem; }
+    .content-section h2 { font-family:'Noto Serif JP',serif; font-size:1.4rem; margin-bottom:1rem; }
+    .content-section p { font-size:0.92rem; line-height:1.9; color:var(--gray); margin-bottom:1rem; }
+    .steps { display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem; }
+    .step-item { display:flex; gap:1.2rem; align-items:flex-start; background:var(--light); border-radius:4px; padding:1.2rem 1.5rem; }
+    .step-badge { flex-shrink:0; width:32px; height:32px; background:var(--red); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; }
+    .step-item h4 { font-size:0.95rem; margin-bottom:0.3rem; }
+    .step-item p { font-size:0.85rem; color:var(--gray); margin:0; line-height:1.6; }
+    .info-table { width:100%; border-collapse:collapse; margin-top:1.2rem; font-size:0.88rem; }
+    .info-table th, .info-table td { padding:0.8rem 1rem; text-align:left; border-bottom:1px solid rgba(0,0,0,0.07); }
+    .info-table th { background:var(--ink); color:var(--white); font-weight:500; font-size:0.8rem; }
+    .info-table tr:nth-child(even) td { background:var(--light); }
+    .note { background:#fff8e1; border-left:4px solid var(--accent); border-radius:2px; padding:1rem 1.2rem; font-size:0.87rem; color:#6d5a00; line-height:1.7; margin-top:1.2rem; }
+    .note strong { color:#5a4800; }
+    .cta-box { background:var(--ink); color:var(--white); border-radius:4px; padding:2.5rem; text-align:center; margin-top:3rem; }
+    .cta-box h3 { font-family:'DM Serif Display',serif; font-size:1.6rem; margin-bottom:0.5rem; }
+    .cta-box p { color:#aaa; font-size:0.88rem; margin-bottom:1.5rem; }
+    .cta-btn { display:inline-block; padding:0.9rem 2.5rem; background:var(--red); color:#fff; text-decoration:none; border-radius:3px; font-size:0.9rem; transition:background 0.2s; }
+    .cta-btn:hover { background:var(--red2); }
+    footer { background:var(--ink); color:#666; text-align:center; padding:2rem; font-size:0.8rem; }
+    footer span { color:var(--red2); }
+  </style>
+</head>
+<body class="lang-ja">
+
+<nav>
+  <a class="nav-logo" href="sp.html"><span>外</span>国人サポート</a>
+  <div class="nav-right">
+    <a class="back-btn" href="sp.html"><span data-lang="ja">トップへ戻る</span><span data-lang="zh">返回首页</span><span data-lang="en">Back to Top</span></a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-target="ja" onclick="setLang('ja')">JP</button>
+      <button class="lang-btn" data-target="zh" onclick="setLang('zh')">中</button>
+      <button class="lang-btn" data-target="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <p class="tag">Education & Japanese</p>
+  <h1>🎓
+    <span data-lang="ja">教育・日本語学習</span>
+    <span data-lang="zh">教育日语学习</span>
+    <span data-lang="en">Education & Japanese Learning</span>
+  </h1>
+  <p>
+    <span data-lang="ja">日本語教室の紹介から子どもの学校入学サポートまで、学びに関するあらゆるご相談に対応します。</span>
+    <span data-lang="zh">从日语教室介绍到子女入学支持，我们应对一切与学习相关的咨询。</span>
+    <span data-lang="en">From Japanese class introductions to school enrollment support for children, we handle all education-related questions.</span>
+  </p>
+</div>
+
+<main>
+
+  <div class="content-section">
+    <span class="section-num">01</span>
+    <h2>
+      <span data-lang="ja">日本語教室・学習支援</span>
+      <span data-lang="zh">日语教室·学习支援</span>
+      <span data-lang="en">Japanese Classes & Learning Support</span>
+    </h2>
+    <p>
+      <span data-lang="ja">日本語能力は生活・就労の両面で大変重要です。地域の日本語教室や無料の学習支援を上手に活用しましょう。</span>
+      <span data-lang="zh">日语能力在生活和工作两方面都非常重要。请善加利用当地的日语教室和免费学习支援资源。</span>
+      <span data-lang="en">Japanese proficiency is vital for both daily life and work. Make good use of local Japanese classes and free learning support resources.</span>
+    </p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-badge">📚</div>
+        <div>
+          <h4><span data-lang="ja">地域の日本語教室</span><span data-lang="zh">当地日语教室</span><span data-lang="en">Local Japanese Classes</span></h4>
+          <p><span data-lang="ja">各市区町村の国際交流協会や公民館が無料・低価格の日本語教室を開催しています。初心者から受講可能です。</span><span data-lang="zh">各市区町村的国际交流协会和公民馆开设免费或低价的日语教室，初学者也可参加。</span><span data-lang="en">International exchange associations and community centers offer free or low-cost Japanese classes, including for beginners.</span></p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-badge">📱</div>
+        <div>
+          <h4><span data-lang="ja">オンライン学習ツール</span><span data-lang="zh">在线学习工具</span><span data-lang="en">Online Learning Tools</span></h4>
+          <p><span data-lang="ja">NHKワールドの「日本語」講座、Duolingo、みんなの日本語など、無料・低価格で学べるリソースが豊富にあります。</span><span data-lang="zh">NHK World的日语课程、Duolingo、大家的日语等，有丰富的免费或低价学习资源。</span><span data-lang="en">Resources like NHK World Japanese, Duolingo, and Minna no Nihongo offer free or affordable learning options.</span></p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-badge">🎌</div>
+        <div>
+          <h4><span data-lang="ja">日本語能力試験（JLPT）</span><span data-lang="zh">日语能力考试（JLPT）</span><span data-lang="en">Japanese Language Proficiency Test (JLPT)</span></h4>
+          <p><span data-lang="ja">就職や大学進学に役立つ資格です。N5〜N1の5段階があり、年2回（7月・12月）実施されます。</span><span data-lang="zh">对就职和升学有帮助的资格证书。分N5至N1共5个等级，每年举办两次（7月、12月）。</span><span data-lang="en">A useful certification for employment and university entrance. Five levels (N5–N1), held twice a year (July & December).</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <span class="section-num">02</span>
+    <h2>
+      <span data-lang="ja">子どもの学校入学</span>
+      <span data-lang="zh">子女入学</span>
+      <span data-lang="en">School Enrollment for Children</span>
+    </h2>
+    <p>
+      <span data-lang="ja">外国籍の子どもも日本の公立小・中学校に就学することができます。入学手続きは居住地の市区町村教育委員会を通じて行います。</span>
+      <span data-lang="zh">外籍子女也可以就读日本公立小学和初中。入学手续通过居住地的市区町村教育委员会办理。</span>
+      <span data-lang="en">Foreign children can attend Japanese public elementary and junior high schools. Enrollment is handled through your local Board of Education.</span>
+    </p>
+
+    <table class="info-table">
+      <tr>
+        <th><span data-lang="ja">学校種別</span><span data-lang="zh">学校类别</span><span data-lang="en">School Type</span></th>
+        <th><span data-lang="ja">対象年齢</span><span data-lang="zh">适用年龄</span><span data-lang="en">Age Range</span></th>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">小学校</span><span data-lang="zh">小学</span><span data-lang="en">Elementary School</span></td>
+        <td><span data-lang="ja">6〜12歳</span><span data-lang="zh">6〜12岁</span><span data-lang="en">Ages 6–12</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">中学校</span><span data-lang="zh">初中</span><span data-lang="en">Junior High School</span></td>
+        <td><span data-lang="ja">13〜15歳</span><span data-lang="zh">13〜15岁</span><span data-lang="en">Ages 13–15</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">高校・大学</span><span data-lang="zh">高中·大学</span><span data-lang="en">High School / University</span></td>
+        <td><span data-lang="ja">入学試験・審査あり</span><span data-lang="zh">需参加入学考试或审查</span><span data-lang="en">Entrance exam / review required</span></td>
+      </tr>
+    </table>
+
+    <div class="note">
+      <span data-lang="ja"><strong>💡 ポイント：</strong>公立小・中学校は授業料が無料です。教科書も無償で配布されます。</span>
+      <span data-lang="zh"><strong>💡 要点：</strong>公立小学和初中免收学费，教科书也免费发放。</span>
+      <span data-lang="en"><strong>💡 Tip:</strong> Public elementary and junior high schools are tuition-free, and textbooks are provided at no cost.</span>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <span class="section-num">03</span>
+    <h2>
+      <span data-lang="ja">奨学金・学費支援</span>
+      <span data-lang="zh">奖学金·学费支援</span>
+      <span data-lang="en">Scholarships & Financial Aid</span>
+    </h2>
+    <p>
+      <span data-lang="ja">外国人留学生や定住外国人を対象とした奨学金制度が複数あります。日本学生支援機構（JASSO）や各自治体の奨学金をご確認ください。</span>
+      <span data-lang="zh">有多种面向外国留学生和定居外国人的奖学金制度。请查阅日本学生支援机构（JASSO）及各地方政府的奖学金信息。</span>
+      <span data-lang="en">Various scholarships are available for foreign students and residents, including JASSO and local government scholarships. We can help you find the right one.</span>
+    </p>
+
+    <div class="note">
+      <span data-lang="ja"><strong>📋 当センターでは：</strong>奨学金の申請書類の書き方サポートや、学校との連絡代行なども行っています。お気軽にご相談ください。</span>
+      <span data-lang="zh"><strong>📋 本中心提供：</strong>奖学金申请材料的填写指导，以及代为联系学校等服务，欢迎随时咨询。</span>
+      <span data-lang="en"><strong>📋 Our center offers:</strong> Help with scholarship application documents and school communication support. Contact us anytime.</span>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3><span data-lang="ja">学びに関するご相談はこちら</span><span data-lang="zh">有关学习的咨询请点这里</span><span data-lang="en">Education-related Questions?</span></h3>
+    <p><span data-lang="ja">日本語学習から子どもの進学まで、一緒に考えます。</span><span data-lang="zh">从日语学习到子女升学，我们与您一同思考解决方案。</span><span data-lang="en">From Japanese learning to school enrollment, we're here to help you figure it out together.</span></p>
+    <a class="cta-btn" href="sp.html#contact"><span data-lang="ja">無料相談はこちら</span><span data-lang="zh">免费咨询请点这里</span><span data-lang="en">Free Consultation</span></a>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    <span data-lang="ja">© 2025 外国人サポートセンター kcgi — Made with <span>♥</span> for our international community</span>
+    <span data-lang="zh">© 2025 外国人サポートセンター kcgi — 用 <span>♥</span> 服务每一位在日外国人</span>
+    <span data-lang="en">© 2025 Foreign Residents Support Center, kcgi — Made with <span>♥</span> for our international community</span>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.target === lang));
+    localStorage.setItem('preferred-lang', lang);
+  }
+  const saved = localStorage.getItem('preferred-lang');
+  if (saved) setLang(saved);
+</script>
+</body>
+</html>

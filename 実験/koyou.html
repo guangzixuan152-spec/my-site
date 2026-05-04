@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>就労・雇用サポート | 外国人サポートセンター</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root { --red:#c0392b; --red2:#e74c3c; --white:#f9f4ef; --ink:#1a1a1a; --gray:#5a5a5a; --light:#ede7df; --accent:#d4a843; }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Noto Sans JP',sans-serif; background:var(--white); color:var(--ink); }
+
+    [data-lang] { display:none; }
+    .lang-ja [data-lang="ja"], .lang-zh [data-lang="zh"], .lang-en [data-lang="en"] { display:revert; }
+
+    .lang-switcher { display:flex; gap:0.3rem; }
+    .lang-btn { padding:0.28rem 0.65rem; background:transparent; border:1px solid #555; color:#aaa; border-radius:3px; font-size:0.72rem; cursor:pointer; transition:all 0.2s; font-family:'Noto Sans JP',sans-serif; }
+    .lang-btn:hover { border-color:var(--red2); color:var(--white); }
+    .lang-btn.active { background:var(--red); border-color:var(--red); color:#fff; }
+
+    nav { display:flex; justify-content:space-between; align-items:center; padding:1rem 5vw; background:var(--ink); position:sticky; top:0; z-index:100; }
+    .nav-logo { font-family:'Noto Serif JP',serif; font-size:1.1rem; color:var(--white); text-decoration:none; }
+    .nav-logo span { color:var(--red2); }
+    .nav-right { display:flex; align-items:center; gap:1.5rem; }
+    .back-btn { display:inline-flex; align-items:center; gap:0.4rem; color:#ccc; text-decoration:none; font-size:0.85rem; transition:color 0.2s; }
+    .back-btn:hover { color:var(--white); }
+    .back-btn::before { content:'←'; }
+
+    .page-hero { background:var(--ink); padding:4rem 8vw 3rem; border-bottom:3px solid var(--red); }
+    .page-hero .tag { font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
+    .page-hero h1 { font-family:'DM Serif Display',serif; font-size:clamp(2rem,5vw,3.5rem); color:var(--white); line-height:1.2; }
+    .page-hero p { margin-top:1rem; color:#aaa; font-size:0.95rem; max-width:560px; line-height:1.8; }
+
+    main { max-width:860px; margin:0 auto; padding:4rem 5vw; }
+    .content-section { margin-bottom:3.5rem; padding-bottom:3.5rem; border-bottom:1px solid rgba(0,0,0,0.08); }
+    .content-section:last-child { border-bottom:none; }
+    .section-num { display:inline-block; background:var(--red); color:#fff; font-size:0.7rem; padding:0.2rem 0.6rem; border-radius:2px; margin-bottom:0.8rem; }
+    .content-section h2 { font-family:'Noto Serif JP',serif; font-size:1.4rem; margin-bottom:1rem; }
+    .content-section p { font-size:0.92rem; line-height:1.9; color:var(--gray); margin-bottom:1rem; }
+
+    .steps { display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem; }
+    .step-item { display:flex; gap:1.2rem; align-items:flex-start; background:var(--light); border-radius:4px; padding:1.2rem 1.5rem; }
+    .step-badge { flex-shrink:0; width:32px; height:32px; background:var(--red); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; }
+    .step-item h4 { font-size:0.95rem; margin-bottom:0.3rem; }
+    .step-item p { font-size:0.85rem; color:var(--gray); margin:0; line-height:1.6; }
+
+    .info-table { width:100%; border-collapse:collapse; margin-top:1.2rem; font-size:0.88rem; }
+    .info-table th, .info-table td { padding:0.8rem 1rem; text-align:left; border-bottom:1px solid rgba(0,0,0,0.07); }
+    .info-table th { background:var(--ink); color:var(--white); font-weight:500; font-size:0.8rem; }
+    .info-table tr:nth-child(even) td { background:var(--light); }
+
+    .note { background:#fff8e1; border-left:4px solid var(--accent); border-radius:2px; padding:1rem 1.2rem; font-size:0.87rem; color:#6d5a00; line-height:1.7; margin-top:1.2rem; }
+    .note strong { color:#5a4800; }
+
+    .cta-box { background:var(--ink); color:var(--white); border-radius:4px; padding:2.5rem; text-align:center; margin-top:3rem; }
+    .cta-box h3 { font-family:'DM Serif Display',serif; font-size:1.6rem; margin-bottom:0.5rem; }
+    .cta-box p { color:#aaa; font-size:0.88rem; margin-bottom:1.5rem; }
+    .cta-btn { display:inline-block; padding:0.9rem 2.5rem; background:var(--red); color:#fff; text-decoration:none; border-radius:3px; font-size:0.9rem; transition:background 0.2s; }
+    .cta-btn:hover { background:var(--red2); }
+
+    footer { background:var(--ink); color:#666; text-align:center; padding:2rem; font-size:0.8rem; }
+    footer span { color:var(--red2); }
+  </style>
+</head>
+<body class="lang-ja">
+
+<nav>
+  <a class="nav-logo" href="sp.html"><span>外</span>国人サポート</a>
+  <div class="nav-right">
+    <a class="back-btn" href="sp.html"><span data-lang="ja">トップへ戻る</span><span data-lang="zh">返回首页</span><span data-lang="en">Back to Top</span></a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-target="ja" onclick="setLang('ja')">JP</button>
+      <button class="lang-btn" data-target="zh" onclick="setLang('zh')">中</button>
+      <button class="lang-btn" data-target="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <p class="tag">Employment & Work</p>
+  <h1>💼
+    <span data-lang="ja">就労・雇用サポート</span>
+    <span data-lang="zh">就业雇佣支持</span>
+    <span data-lang="en">Employment Support</span>
+  </h1>
+  <p>
+    <span data-lang="ja">就労ビザの種類や労働ルール、トラブル対応まで、安心して働けるようサポートします。</span>
+    <span data-lang="zh">从工作签证种类到劳动规定及纠纷处理，全面支持您安心工作。</span>
+    <span data-lang="en">From work visa types to labor rules and dispute resolution, we help you work with confidence in Japan.</span>
+  </p>
+</div>
+
+<main>
+
+  <div class="content-section">
+    <span class="section-num">01</span>
+    <h2>
+      <span data-lang="ja">就労ビザの種類</span>
+      <span data-lang="zh">工作签证种类</span>
+      <span data-lang="en">Types of Work Visas</span>
+    </h2>
+    <p>
+      <span data-lang="ja">日本で働くためには、在留資格（ビザ）に「就労」が認められている必要があります。職種や状況によって必要なビザが異なります。</span>
+      <span data-lang="zh">在日本工作需要持有允许就业的在留资格（签证）。根据职业和情况，所需签证类别有所不同。</span>
+      <span data-lang="en">To work in Japan, your residence status must permit employment. The required visa type varies depending on your job and situation.</span>
+    </p>
+
+    <table class="info-table">
+      <tr>
+        <th><span data-lang="ja">ビザの種類</span><span data-lang="zh">签证种类</span><span data-lang="en">Visa Type</span></th>
+        <th><span data-lang="ja">主な対象</span><span data-lang="zh">主要适用对象</span><span data-lang="en">Main Target</span></th>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">技術・人文知識・国際業務</span><span data-lang="zh">技术·人文知识·国际业务</span><span data-lang="en">Engineer / Specialist</span></td>
+        <td><span data-lang="ja">IT・会計・通訳など専門職</span><span data-lang="zh">IT、会计、口译等专业职位</span><span data-lang="en">IT, accounting, interpretation, etc.</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">特定技能</span><span data-lang="zh">特定技能</span><span data-lang="en">Specified Skilled Worker</span></td>
+        <td><span data-lang="ja">介護・建設・農業など14分野</span><span data-lang="zh">护理、建筑、农业等14个领域</span><span data-lang="en">14 sectors incl. nursing, construction</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">永住者・定住者</span><span data-lang="zh">永久居留者·定居者</span><span data-lang="en">Permanent / Long-term Resident</span></td>
+        <td><span data-lang="ja">就労制限なし</span><span data-lang="zh">无就业限制</span><span data-lang="en">No work restrictions</span></td>
+      </tr>
+      <tr>
+        <td><span data-lang="ja">留学（資格外活動許可）</span><span data-lang="zh">留学（资格外活动许可）</span><span data-lang="en">Student (with permission)</span></td>
+        <td><span data-lang="ja">週28時間以内のアルバイト</span><span data-lang="zh">每周兼职不超过28小时</span><span data-lang="en">Part-time up to 28 hours/week</span></td>
+      </tr>
+    </table>
+
+    <div class="note">
+      <span data-lang="ja"><strong>⚠️ 注意：</strong>ビザで認められた範囲を超えて働くことは法律違反です。不明な点は事前に必ずご確認ください。</span>
+      <span data-lang="zh"><strong>⚠️ 注意：</strong>超出签证允许范围工作属于违法行为。如有不明之处，请务必事先确认。</span>
+      <span data-lang="en"><strong>⚠️ Note:</strong> Working beyond your visa's permitted scope is illegal. Always check in advance if you're unsure.</span>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <span class="section-num">02</span>
+    <h2>
+      <span data-lang="ja">働く際の基本ルール</span>
+      <span data-lang="zh">工作基本规定</span>
+      <span data-lang="en">Basic Work Rules</span>
+    </h2>
+    <p>
+      <span data-lang="ja">日本の労働基準法はすべての労働者に適用されます。外国人であっても同じ権利が守られています。</span>
+      <span data-lang="zh">日本的劳动基准法适用于所有劳动者，外国人同样受到相同权利的保护。</span>
+      <span data-lang="en">Japan's Labor Standards Act applies to all workers. Foreign nationals have the same rights as Japanese workers.</span>
+    </p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-badge">✓</div>
+        <div>
+          <h4><span data-lang="ja">労働契約書を必ず受け取る</span><span data-lang="zh">务必索取劳动合同</span><span data-lang="en">Always Get an Employment Contract</span></h4>
+          <p><span data-lang="ja">雇用条件（給与・労働時間・休日など）が明記された書面を必ずもらいましょう。口頭の約束だけでは後でトラブルになる可能性があります。</span><span data-lang="zh">务必索取写明雇佣条件（薪资、工作时间、休假等）的书面合同。仅凭口头约定日后可能产生纠纷。</span><span data-lang="en">Always receive a written document clearly stating your employment conditions (salary, hours, holidays, etc.).</span></p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-badge">✓</div>
+        <div>
+          <h4><span data-lang="ja">給与明細を保管する</span><span data-lang="zh">保存工资条</span><span data-lang="en">Keep Your Pay Slips</span></h4>
+          <p><span data-lang="ja">毎月の給与明細は必ず保管してください。未払い賃金トラブルの際に重要な証拠になります。</span><span data-lang="zh">请务必保存每月的工资条，这是发生欠薪纠纷时的重要证据。</span><span data-lang="en">Keep all monthly pay slips. They are important evidence if wage disputes arise.</span></p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-badge">✓</div>
+        <div>
+          <h4><span data-lang="ja">時間外労働は割増賃金が発生する</span><span data-lang="zh">加班须支付加班费</span><span data-lang="en">Overtime Must Be Paid Extra</span></h4>
+          <p><span data-lang="ja">法定労働時間（1日8時間・週40時間）を超えた場合、割増賃金（25%以上）が支払われる必要があります。</span><span data-lang="zh">超过法定劳动时间（每天8小时·每周40小时），必须支付加班费（25%以上）。</span><span data-lang="en">Work beyond 8 hours/day or 40 hours/week must be paid at a premium rate (25% or more extra).</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <span class="section-num">03</span>
+    <h2>
+      <span data-lang="ja">労働トラブルへの対応</span>
+      <span data-lang="zh">劳动纠纷应对方法</span>
+      <span data-lang="en">Handling Labor Disputes</span>
+    </h2>
+    <p>
+      <span data-lang="ja">給与未払い・不当解雇・ハラスメントなどのトラブルが起きた場合は、一人で悩まずにすぐご相談ください。公的な相談窓口もあります。</span>
+      <span data-lang="zh">如遇欠薪、不当解雇、骚扰等纠纷，请不要独自烦恼，立即向我们咨询。也有政府设立的相关咨询窗口。</span>
+      <span data-lang="en">If you face unpaid wages, unfair dismissal, or harassment, don't suffer alone. Contact us or a public labor consultation office immediately.</span>
+    </p>
+
+    <div class="note">
+      <span data-lang="ja"><strong>📞 相談先：</strong>労働基準監督署（無料）、労働局（外国人労働者向け相談コーナーあり）、当センター</span>
+      <span data-lang="zh"><strong>📞 咨询渠道：</strong>劳动基准监察署（免费）、劳动局（设有外国劳动者咨询窗口）、本中心</span>
+      <span data-lang="en"><strong>📞 Where to Go:</strong> Labor Standards Inspection Office (free), Labor Bureau (foreign worker consultation available), our center</span>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3><span data-lang="ja">仕事に関するご相談はこちら</span><span data-lang="zh">有关工作的咨询请点这里</span><span data-lang="en">Work-related Consultation</span></h3>
+    <p><span data-lang="ja">ビザのことも労働トラブルも、まずはお気軽にご相談ください。</span><span data-lang="zh">无论是签证还是劳动纠纷，欢迎随时咨询。</span><span data-lang="en">Whether it's a visa question or a labor dispute, feel free to contact us first.</span></p>
+    <a class="cta-btn" href="sp.html#contact"><span data-lang="ja">無料相談はこちら</span><span data-lang="zh">免费咨询请点这里</span><span data-lang="en">Free Consultation</span></a>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    <span data-lang="ja">© 2025 外国人サポートセンター kcgi — Made with <span>♥</span> for our international community</span>
+    <span data-lang="zh">© 2025 外国人サポートセンター kcgi — 用 <span>♥</span> 服务每一位在日外国人</span>
+    <span data-lang="en">© 2025 Foreign Residents Support Center, kcgi — Made with <span>♥</span> for our international community</span>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.target === lang));
+    localStorage.setItem('preferred-lang', lang);
+  }
+  const saved = localStorage.getItem('preferred-lang');
+  if (saved) setLang(saved);
+</script>
+</body>
+</html>
