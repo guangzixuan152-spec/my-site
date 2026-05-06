@@ -32,7 +32,7 @@
     /* ══════════════════
        NAV  — light warm
     ══════════════════ */
-      nav {
+  nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; justify-content: space-between; align-items: center;
   padding: 0 5vw; height: 58px;
@@ -611,6 +611,16 @@
   }
 
   function toggleFaq(btn) { btn.closest('.faq-item').classList.toggle('open'); }
+  function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const links = document.getElementById('nav-links');
+  btn.classList.toggle('open');
+  links.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('nav-links').classList.remove('open');
+}
 </script>
 </body>
 </html>
