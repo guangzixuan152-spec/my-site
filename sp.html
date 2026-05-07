@@ -25,103 +25,97 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Noto Sans JP', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
 
-    /* ── LANG ── */
     [data-lang] { display: none; }
     .lang-ja [data-lang="ja"], .lang-zh [data-lang="zh"], .lang-en [data-lang="en"] { display: revert; }
 
-    /* ══════════════════
-       NAV  — light warm
-    ══════════════════ */
-  nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0 5vw; height: 58px;
-  background: rgba(247,242,235,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(176,125,42,0.12);
-}
-.nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-.nav-logo-mark {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: var(--gold); display: flex; align-items: center; justify-content: center;
-  font-family: 'Noto Serif JP', serif; font-size: 0.75rem; color: #fff; flex-shrink: 0;
-}
-.nav-logo-text { font-family: 'Noto Serif JP', serif; font-size: 0.88rem; color: var(--ink); letter-spacing: 0.04em; }
-.nav-right { display: flex; align-items: center; gap: 1.6rem; }
-.nav-links { display: flex; gap: 1.5rem; list-style: none; }
-.nav-links a { color: var(--gray); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.05em; transition: color 0.2s; }
-.nav-links a:hover { color: var(--gold); }
-.lang-switcher { display: flex; gap: 0.2rem; }
-.lang-btn {
-  padding: 0.2rem 0.5rem; background: transparent;
-  border: 1px solid rgba(176,125,42,0.22); color: var(--gray);
-  border-radius: 2px; font-size: 0.65rem; cursor: pointer;
-  transition: all 0.2s; font-family: 'Noto Sans JP', sans-serif;
-}
-.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
-.lang-btn.active { background: var(--gold); border-color: var(--gold); color: #fff; }
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 5vw; height: 58px;
+      background: rgba(247,242,235,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(176,125,42,0.12);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; flex-shrink: 0; }
+    .nav-logo-mark {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-family: 'Noto Serif JP', serif; font-size: 0.7rem; color: #fff; flex-shrink: 0;
+    }
+    .nav-logo-text { font-family: 'Noto Serif JP', serif; font-size: 0.88rem; color: var(--ink); letter-spacing: 0.04em; }
 
-/* ── hamburger button (mobile only) ── */
-.nav-hamburger {
-  display: none; flex-direction: column; justify-content: center;
-  gap: 5px; width: 36px; height: 36px; cursor: pointer;
-  background: none; border: none; padding: 4px; flex-shrink: 0;
-}
-.nav-hamburger span {
-  display: block; width: 22px; height: 1.5px;
-  background: var(--ink); border-radius: 2px;
-  transition: transform 0.3s, opacity 0.3s;
-}
-.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; }
-.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    /* desktop: links sit in the middle */
+    .nav-links {
+      display: flex; gap: 1.5rem; list-style: none;
+      flex: 1; justify-content: center;
+    }
+    .nav-links a { color: var(--gray); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.05em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
 
-/* ── mobile drawer ── */
-@media (max-width: 768px) {
-  .nav-hamburger { display: flex; }
-  .nav-links {
-    position: fixed; top: 58px; left: 0; right: 0;
-    flex-direction: column; gap: 0;
-    background: rgba(247,242,235,0.98);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(176,125,42,0.12);
-    padding: 0;
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.3s;
-  }
-  .nav-links.open {
-    max-height: 400px;
-    padding: 0.5rem 0;
-  }
-  .nav-links li { border-bottom: 1px solid rgba(176,125,42,0.08); }
-  .nav-links a {
-    display: block; padding: 0.9rem 5vw;
-    font-size: 0.88rem; color: var(--ink);
-  }
-  .nav-links a:hover { color: var(--gold); background: rgba(176,125,42,0.04); }
-}
+    .nav-right { display: flex; align-items: center; gap: 0.8rem; flex-shrink: 0; }
+    .lang-switcher { display: flex; gap: 0.2rem; }
+    .lang-btn {
+      padding: 0.2rem 0.5rem; background: transparent;
+      border: 1px solid rgba(176,125,42,0.22); color: var(--gray);
+      border-radius: 2px; font-size: 0.65rem; cursor: pointer;
+      transition: all 0.2s; font-family: 'Noto Sans JP', sans-serif;
+    }
+    .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .lang-btn.active { background: var(--gold); border-color: var(--gold); color: #fff; }
 
-    /* ══════════════════════════════════
-       HERO — warm, light, inviting
-    ══════════════════════════════════ */
-    header {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 52% 48%;
-      position: relative;
-      overflow: hidden;
-      background: var(--cream);
+    /* hamburger — hidden on desktop */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; width: 36px; height: 36px; cursor: pointer;
+      background: none; border: none; padding: 4px; flex-shrink: 0;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--ink); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* mobile */
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        /* dropdown drawer */
+        position: fixed; top: 58px; left: 0; right: 0;
+        flex-direction: column; justify-content: flex-start; gap: 0;
+        background: rgba(247,242,235,0.98);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(176,125,42,0.12);
+        max-height: 0; overflow: hidden;
+        transition: max-height 0.35s ease;
+        /* override flex: 1 from desktop */
+        flex: unset;
+      }
+      .nav-links.open { max-height: 400px; }
+      .nav-links li { border-bottom: 1px solid rgba(176,125,42,0.07); }
+      .nav-links a {
+        display: block; padding: 0.95rem 5vw;
+        font-size: 0.9rem; color: var(--ink);
+      }
+      .nav-links a:hover { color: var(--gold); background: rgba(176,125,42,0.04); }
     }
 
-    /* warm radial wash on left */
+    /* ── HERO ── */
+    header {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 52% 48%;
+      position: relative; overflow: hidden;
+      background: var(--cream);
+    }
     .hero-wash {
       position: absolute; inset: 0; pointer-events: none; z-index: 0;
       background:
         radial-gradient(ellipse 80% 70% at 20% 55%, rgba(240,224,184,0.55) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 60% at 5%  20%, rgba(240,224,184,0.25) 0%, transparent 55%);
+        radial-gradient(ellipse 40% 60% at 5% 20%, rgba(240,224,184,0.25) 0%, transparent 55%);
     }
-
-    /* subtle dot-grid texture */
     .hero-dots {
       position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.35;
       background-image: radial-gradient(circle, rgba(176,125,42,0.18) 1px, transparent 1px);
@@ -129,76 +123,48 @@
       -webkit-mask-image: linear-gradient(135deg, transparent 30%, rgba(0,0,0,0.3) 60%, transparent 80%);
       mask-image: linear-gradient(135deg, transparent 30%, rgba(0,0,0,0.3) 60%, transparent 80%);
     }
-
-    /* ── LEFT TEXT ── */
     .hero-left {
       position: relative; z-index: 5;
       display: flex; flex-direction: column; justify-content: center;
       padding: 8rem 4vw 6rem 8vw;
     }
-
     .hero-tag {
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase;
-      color: var(--gold2); margin-bottom: 1.8rem;
-      font-weight: 500;
+      color: var(--gold2); margin-bottom: 1.8rem; font-weight: 500;
     }
     .hero-tag-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold2); flex-shrink: 0; }
-
     .hero-title {
       font-family: 'Lora', serif;
       font-size: clamp(2.2rem, 3.5vw, 3.8rem);
-      font-weight: 400; line-height: 1.32;
-      color: var(--ink); margin-bottom: 0.5rem;
+      font-weight: 400; line-height: 1.32; color: var(--ink); margin-bottom: 0.5rem;
     }
-    .hero-title em {
-      font-style: italic; color: var(--gold);
-    }
-
+    .hero-title em { font-style: italic; color: var(--gold); }
     .hero-ja {
       font-family: 'Noto Serif JP', serif; font-weight: 300;
       font-size: clamp(0.68rem, 0.9vw, 0.82rem);
-      letter-spacing: 0.45em; color: rgba(176,125,42,0.5);
-      margin-bottom: 2rem;
+      letter-spacing: 0.45em; color: rgba(176,125,42,0.5); margin-bottom: 2rem;
     }
-
     .hero-desc {
       font-size: 0.88rem; line-height: 2.05;
-      color: var(--gray); max-width: 360px;
-      margin-bottom: 2.5rem;
+      color: var(--gray); max-width: 360px; margin-bottom: 2.5rem;
     }
-
-    /* three key points */
-    .hero-points {
-      display: flex; flex-direction: column; gap: 0.75rem;
-      margin-bottom: 2.8rem;
-    }
-    .hero-point {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-size: 0.82rem; color: var(--gray);
-    }
+    .hero-points { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.8rem; }
+    .hero-point { display: flex; align-items: center; gap: 0.75rem; font-size: 0.82rem; color: var(--gray); }
     .hero-point-icon {
       width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
-      background: var(--goldsft);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem;
+      background: var(--goldsft); display: flex; align-items: center; justify-content: center; font-size: 0.75rem;
     }
-
     .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-
     .btn-primary {
-      padding: 0.75rem 2rem;
-      background: var(--gold);
-      color: #fff; font-size: 0.82rem; font-weight: 500;
-      font-family: 'Noto Sans JP', sans-serif; letter-spacing: 0.1em;
-      text-decoration: none; border: none; cursor: pointer; border-radius: 3px;
-      transition: background 0.2s, transform 0.2s;
+      padding: 0.75rem 2rem; background: var(--gold); color: #fff;
+      font-size: 0.82rem; font-weight: 500; font-family: 'Noto Sans JP', sans-serif;
+      letter-spacing: 0.1em; text-decoration: none; border: none; cursor: pointer;
+      border-radius: 3px; transition: background 0.2s, transform 0.2s;
     }
     .btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
-
     .btn-ghost {
-      padding: 0.75rem 1.6rem;
-      background: transparent;
+      padding: 0.75rem 1.6rem; background: transparent;
       border: 1.5px solid var(--sand); color: var(--gray);
       font-size: 0.82rem; font-family: 'Noto Sans JP', sans-serif; letter-spacing: 0.1em;
       text-decoration: none; cursor: pointer; border-radius: 3px;
@@ -206,78 +172,42 @@
     }
     .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* ── RIGHT PHOTO ── */
-    .hero-right {
-      position: relative; z-index: 4; overflow: hidden;
-    }
-
-    .hero-photo {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
-      display: block;
-    }
-
-    /* placeholder */
+    /* right photo */
+    .hero-right { position: relative; z-index: 4; overflow: hidden; }
+    .hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
     .hero-photo-placeholder {
       width: 100%; height: 100%; min-height: 100vh;
       background: linear-gradient(145deg, #e8dfd0 0%, #d9ccba 50%, #cfc0a5 100%);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       gap: 1rem; color: rgba(176,125,42,0.4); font-size: 0.72rem; letter-spacing: 0.2em; text-align: center;
     }
-    .hero-photo-placeholder span { font-size: 2.2rem; opacity: 0.3; }
-
-    /* gradient: left edge fully opaque cream → fades to transparent → photo clear on right */
     .hero-photo-fade {
       position: absolute; inset: 0; z-index: 2; pointer-events: none;
-      background: linear-gradient(
-        90deg,
-        var(--cream) 0%,
-        rgba(247,242,235,0.78) 14%,
-        rgba(247,242,235,0.35) 32%,
-        rgba(247,242,235,0.08) 52%,
-        transparent 68%
-      );
+      background: linear-gradient(90deg, var(--cream) 0%, rgba(247,242,235,0.78) 14%, rgba(247,242,235,0.35) 32%, rgba(247,242,235,0.08) 52%, transparent 68%);
     }
-
-    /* blur strongest on left */
     .hero-photo-blur {
       position: absolute; inset: 0; z-index: 1; pointer-events: none;
       backdrop-filter: blur(4px);
       -webkit-mask-image: linear-gradient(90deg, black 0%, black 15%, rgba(0,0,0,0.5) 32%, transparent 55%);
       mask-image: linear-gradient(90deg, black 0%, black 15%, rgba(0,0,0,0.5) 32%, transparent 55%);
     }
+    .hero-photo-tint { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: rgba(240,220,180,0.08); mix-blend-mode: multiply; }
 
-    /* warm colour wash over photo */
-    .hero-photo-tint {
-      position: absolute; inset: 0; z-index: 2; pointer-events: none;
-      background: rgba(240,220,180,0.08);
-      mix-blend-mode: multiply;
-    }
-
-    /* scroll cue */
     .hero-scroll {
       position: absolute; bottom: 2rem; left: 8vw; z-index: 10;
       display: flex; align-items: center; gap: 0.7rem;
       color: rgba(176,125,42,0.45); font-size: 0.6rem; letter-spacing: 0.28em;
     }
-    .scroll-dash {
-      width: 32px; height: 1px; background: rgba(176,125,42,0.35);
-      animation: dashAnim 2s ease-in-out infinite alternate;
-    }
-    @keyframes dashAnim {
-      from { width: 20px; opacity: 0.35; }
-      to   { width: 38px; opacity: 0.7; }
-    }
+    .scroll-dash { width: 32px; height: 1px; background: rgba(176,125,42,0.35); animation: dashAnim 2s ease-in-out infinite alternate; }
+    @keyframes dashAnim { from { width: 20px; opacity: 0.35; } to { width: 38px; opacity: 0.7; } }
 
     @media (max-width: 860px) {
       header { grid-template-columns: 1fr; }
-      .hero-right { min-height: 280px; max-height: 340px; }
+      .hero-right { min-height: 260px; max-height: 320px; }
       .hero-left { padding: 6.5rem 6vw 2.5rem; }
     }
 
-    /* ══════════════════
-       REST OF PAGE
-    ══════════════════ */
+    /* ── SECTIONS ── */
     section { padding: 6rem 8vw; }
     .section-label { font-size: 0.65rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--red); margin-bottom: 0.7rem; }
     .section-title { font-family: 'Lora', serif; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 400; line-height: 1.28; margin-bottom: 1.2rem; color: var(--ink); }
@@ -296,11 +226,7 @@
     .card-icon { font-size: 1.65rem; margin-bottom: 0.85rem; }
     .card h3 { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--ink); }
     .card p { font-size: 0.8rem; color: var(--gray); line-height: 1.72; }
-    .card-arrow {
-      position: absolute; bottom: 1.2rem; right: 1.2rem;
-      font-size: 0.75rem; color: var(--gold); opacity: 0;
-      transition: opacity 0.2s, transform 0.2s;
-    }
+    .card-arrow { position: absolute; bottom: 1.2rem; right: 1.2rem; font-size: 0.75rem; color: var(--gold); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
     .card:hover .card-arrow { opacity: 1; transform: translateX(3px); }
 
     /* steps */
@@ -359,14 +285,8 @@
     }
     form button:hover { background: var(--red2); }
 
-    /* footer */
-    footer {
-      background: #2e2418; color: rgba(160,148,128,0.5);
-      text-align: center; padding: 2rem; font-size: 0.72rem; letter-spacing: 0.05em;
-      border-top: 1px solid rgba(176,125,42,0.1);
-    }
+    footer { background: #2e2418; color: rgba(160,148,128,0.5); text-align: center; padding: 2rem; font-size: 0.72rem; letter-spacing: 0.05em; border-top: 1px solid rgba(176,125,42,0.1); }
     .heart { color: var(--gold2); }
-
     .reveal { opacity: 1; transform: none; transition: none; }
     .reveal.visible { opacity: 1; transform: none; }
   </style>
@@ -383,6 +303,15 @@
       <span data-lang="en">Foreign Residents Support</span>
     </span>
   </a>
+
+  <!-- desktop: links in middle; mobile: hidden until hamburger opens -->
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#services" onclick="closeMenu()"><span data-lang="ja">サービス</span><span data-lang="zh">服务</span><span data-lang="en">Services</span></a></li>
+    <li><a href="#steps" onclick="closeMenu()"><span data-lang="ja">流れ</span><span data-lang="zh">流程</span><span data-lang="en">Process</span></a></li>
+    <li><a href="#languages" onclick="closeMenu()"><span data-lang="ja">対応言語</span><span data-lang="zh">语言</span><span data-lang="en">Languages</span></a></li>
+    <li><a href="#contact" onclick="closeMenu()"><span data-lang="ja">お問い合わせ</span><span data-lang="zh">联系我们</span><span data-lang="en">Contact</span></a></li>
+  </ul>
+
   <div class="nav-right">
     <div class="lang-switcher">
       <button class="lang-btn active" data-target="ja" onclick="setLang('ja')">JP</button>
@@ -393,12 +322,6 @@
       <span></span><span></span><span></span>
     </button>
   </div>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#services" onclick="closeMenu()"><span data-lang="ja">サービス</span><span data-lang="zh">服务</span><span data-lang="en">Services</span></a></li>
-    <li><a href="#steps" onclick="closeMenu()"><span data-lang="ja">流れ</span><span data-lang="zh">流程</span><span data-lang="en">Process</span></a></li>
-    <li><a href="#languages" onclick="closeMenu()"><span data-lang="ja">対応言語</span><span data-lang="zh">语言</span><span data-lang="en">Languages</span></a></li>
-    <li><a href="#contact" onclick="closeMenu()"><span data-lang="ja">お問い合わせ</span><span data-lang="zh">联系我们</span><span data-lang="en">Contact</span></a></li>
-  </ul>
 </nav>
 
 <!-- HERO -->
@@ -406,7 +329,6 @@
   <div class="hero-wash"></div>
   <div class="hero-dots"></div>
 
-  <!-- LEFT TEXT -->
   <div class="hero-left">
     <div class="hero-tag">
       <div class="hero-tag-dot"></div>
@@ -416,8 +338,8 @@
     </div>
 
     <h1 class="hero-title">
-      <span data-lang="ja">日本での生活、<br/><em>　　　　　　助けて</em></span>
-      <span data-lang="zh">在日生活遇到困难，<br/><em>我们来帮你解决</em></span>
+      <span data-lang="ja">日本での生活、<br/><em>一緒に解決しましょう。</em></span>
+      <span data-lang="zh">在日生活遇到困难，<br/><em>我们来帮你解决。</em></span>
       <span data-lang="en">Navigating life in Japan?<br/><em>We're here to help.</em></span>
     </h1>
 
@@ -436,53 +358,36 @@
     <div class="hero-points">
       <div class="hero-point">
         <div class="hero-point-icon">✓</div>
-        <span>
-          <span data-lang="ja">相談はすべて無料</span>
-          <span data-lang="zh">所有咨询完全免费</span>
-          <span data-lang="en">All consultations are free of charge</span>
-        </span>
+        <span><span data-lang="ja">相談はすべて無料</span><span data-lang="zh">所有咨询完全免费</span><span data-lang="en">All consultations are free of charge</span></span>
       </div>
       <div class="hero-point">
         <div class="hero-point-icon">🌐</div>
-        <span>
-          <span data-lang="ja">日本語・中国語・英語で対応</span>
-          <span data-lang="zh">支持日语·中文·英语</span>
-          <span data-lang="en">Support in Japanese, Chinese & English</span>
-        </span>
+        <span><span data-lang="ja">日本語・中国語・英語で対応</span><span data-lang="zh">支持日语·中文·英语</span><span data-lang="en">Support in Japanese, Chinese & English</span></span>
       </div>
       <div class="hero-point">
         <div class="hero-point-icon">📞</div>
-        <span>
-          <span data-lang="ja">電話・メール・窓口でいつでも</span>
-          <span data-lang="zh">可通过电话·邮件·窗口随时咨询</span>
-          <span data-lang="en">Reach us by phone, email, or in person</span>
-        </span>
+        <span><span data-lang="ja">電話・メール・窓口でいつでも</span><span data-lang="zh">可通过电话·邮件·窗口随时咨询</span><span data-lang="en">Reach us by phone, email, or in person</span></span>
       </div>
     </div>
 
     <div class="hero-btns">
-      <a href="#services" class="btn-primary">
-        <span data-lang="ja">サービスを見る</span>
-        <span data-lang="zh">查看服务内容</span>
-        <span data-lang="en">View Our Services</span>
-      </a>
-      <a href="#contact" class="btn-ghost">
-        <span data-lang="ja">お問い合わせ</span>
-        <span data-lang="zh">联系我们</span>
-        <span data-lang="en">Contact Us</span>
-      </a>
+      <a href="#services" class="btn-primary"><span data-lang="ja">サービスを見る</span><span data-lang="zh">查看服务内容</span><span data-lang="en">View Our Services</span></a>
+      <a href="#contact" class="btn-ghost"><span data-lang="ja">お問い合わせ</span><span data-lang="zh">联系我们</span><span data-lang="en">Contact Us</span></a>
     </div>
   </div>
 
-  <!-- RIGHT PHOTO -->
   <div class="hero-right">
     <img class="hero-photo" src="kcgi.png" alt="KCGI国際交流センター"
       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-    <div class="hero-photo-placeholder" style="display:none;">
-    </div>
+    <div class="hero-photo-placeholder" style="display:none;"></div>
     <div class="hero-photo-tint"></div>
     <div class="hero-photo-blur"></div>
     <div class="hero-photo-fade"></div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-dash"></div>
+    <span data-lang="ja">スクロール</span><span data-lang="zh">向下浏览</span><span data-lang="en">SCROLL</span>
   </div>
 </header>
 
@@ -492,42 +397,12 @@
   <h2 class="section-title reveal"><span data-lang="ja">私たちができること</span><span data-lang="zh">我们能做什么</span><span data-lang="en">What We Can Do</span></h2>
   <p class="section-body reveal"><span data-lang="ja">在留資格から日常生活まで、外国人の方が日本で直面する様々な問題に対応しています。</span><span data-lang="zh">从签证到日常生活，我们全面应对外国人在日本面临的各种问题。</span><span data-lang="en">From visa status to everyday life, we address the many challenges that foreign residents face in Japan.</span></p>
   <div class="grid">
-    <a href="gyosei.html" class="card reveal">
-      <div class="card-icon">🏛️</div>
-      <h3><span data-lang="ja">行政手続きサポート</span><span data-lang="zh">行政手续支持</span><span data-lang="en">Administrative Support</span></h3>
-      <p><span data-lang="ja">在留資格の更新・変更、住民票の登録、マイナンバーの取得など、複雑な手続きをわかりやすくご案内します。</span><span data-lang="zh">签证更新变更、户籍登记、个人编号申请等复杂手续，我们用易懂的方式为您详细说明。</span><span data-lang="en">We guide you through visa renewals, resident registration, My Number applications, and other complex procedures.</span></p>
-      <span class="card-arrow">→</span>
-    </a>
-    <a href="iryou.html" class="card reveal">
-      <div class="card-icon">🏥</div>
-      <h3><span data-lang="ja">医療・健康相談</span><span data-lang="zh">医疗健康咨询</span><span data-lang="en">Medical Support</span></h3>
-      <p><span data-lang="ja">近くの病院の探し方、保険の使い方、受診時の通訳サポートなど、安心して医療を受けられるようお手伝いします。</span><span data-lang="zh">附近医院查找、保险使用方法、就诊时的翻译协助等，帮助您安心就医。</span><span data-lang="en">We help you find hospitals, understand insurance, and provide interpretation support during medical visits.</span></p>
-      <span class="card-arrow">→</span>
-    </a>
-    <a href="koyou.html" class="card reveal">
-      <div class="card-icon">💼</div>
-      <h3><span data-lang="ja">就労・雇用サポート</span><span data-lang="zh">就业雇佣支持</span><span data-lang="en">Employment Support</span></h3>
-      <p><span data-lang="ja">就労ビザの種類、働く際のルール、労働トラブルへの対応方法など、仕事に関する疑問にお答えします。</span><span data-lang="zh">工作签证种类、劳动规定、劳动纠纷处理等，解答您关于工作的各类疑问。</span><span data-lang="en">We answer questions about work visas, labor rules, and how to handle employment disputes.</span></p>
-      <span class="card-arrow">→</span>
-    </a>
-    <a href="juukyo.html" class="card reveal">
-      <div class="card-icon">🏠</div>
-      <h3><span data-lang="ja">住居・生活サポート</span><span data-lang="zh">住居生活支持</span><span data-lang="en">Housing Support</span></h3>
-      <p><span data-lang="ja">アパート探しの注意点、ごみの出し方、公共料金の支払い方法など、日常生活に関する情報を提供します。</span><span data-lang="zh">租房注意事项、垃圾分类、水电费缴纳方式等，提供日常生活相关信息。</span><span data-lang="en">We provide info on renting apartments, garbage disposal rules, utility payments, and more.</span></p>
-      <span class="card-arrow">→</span>
-    </a>
-    <a href="kyouiku.html" class="card reveal">
-      <div class="card-icon">🎓</div>
-      <h3><span data-lang="ja">教育・日本語学習</span><span data-lang="zh">教育日语学习</span><span data-lang="en">Education Support</span></h3>
-      <p><span data-lang="ja">日本語教室の紹介、子どもの学校入学サポート、奨学金情報など、学びに関するご相談を承ります。</span><span data-lang="zh">日语教室介绍、子女入学支持、奖学金信息等，欢迎咨询学习相关问题。</span><span data-lang="en">We introduce Japanese classes, support school enrollment for children, and share scholarship information.</span></p>
-      <span class="card-arrow">→</span>
-    </a>
-    <a href="kinkyuu.html" class="card reveal">
-      <div class="card-icon">🆘</div>
-      <h3><span data-lang="ja">緊急・トラブル対応</span><span data-lang="zh">紧急情况应对</span><span data-lang="en">Emergency Support</span></h3>
-      <p><span data-lang="ja">災害時の情報提供、犯罪被害への対応、緊急連絡先の案内など、困ったときに頼れる窓口です。</span><span data-lang="zh">灾害时信息提供、犯罪受害应对、紧急联系方式指引，遇到困难随时来找我们。</span><span data-lang="en">We provide disaster information, support for crime victims, and emergency contact guidance.</span></p>
-      <span class="card-arrow">→</span>
-    </a>
+    <a href="gyosei.html" class="card reveal"><div class="card-icon">🏛️</div><h3><span data-lang="ja">行政手続きサポート</span><span data-lang="zh">行政手续支持</span><span data-lang="en">Administrative Support</span></h3><p><span data-lang="ja">在留資格の更新・変更、住民票の登録、マイナンバーの取得など、複雑な手続きをわかりやすくご案内します。</span><span data-lang="zh">签证更新变更、户籍登记、个人编号申请等复杂手续，我们用易懂的方式为您详细说明。</span><span data-lang="en">We guide you through visa renewals, resident registration, My Number applications, and other complex procedures.</span></p><span class="card-arrow">→</span></a>
+    <a href="iryou.html" class="card reveal"><div class="card-icon">🏥</div><h3><span data-lang="ja">医療・健康相談</span><span data-lang="zh">医疗健康咨询</span><span data-lang="en">Medical Support</span></h3><p><span data-lang="ja">近くの病院の探し方、保険の使い方、受診時の通訳サポートなど、安心して医療を受けられるようお手伝いします。</span><span data-lang="zh">附近医院查找、保险使用方法、就诊时的翻译协助等，帮助您安心就医。</span><span data-lang="en">We help you find hospitals, understand insurance, and provide interpretation support during medical visits.</span></p><span class="card-arrow">→</span></a>
+    <a href="koyou.html" class="card reveal"><div class="card-icon">💼</div><h3><span data-lang="ja">就労・雇用サポート</span><span data-lang="zh">就业雇佣支持</span><span data-lang="en">Employment Support</span></h3><p><span data-lang="ja">就労ビザの種類、働く際のルール、労働トラブルへの対応方法など、仕事に関する疑問にお答えします。</span><span data-lang="zh">工作签证种类、劳动规定、劳动纠纷处理等，解答您关于工作的各类疑问。</span><span data-lang="en">We answer questions about work visas, labor rules, and how to handle employment disputes.</span></p><span class="card-arrow">→</span></a>
+    <a href="juukyo.html" class="card reveal"><div class="card-icon">🏠</div><h3><span data-lang="ja">住居・生活サポート</span><span data-lang="zh">住居生活支持</span><span data-lang="en">Housing Support</span></h3><p><span data-lang="ja">アパート探しの注意点、ごみの出し方、公共料金の支払い方法など、日常生活に関する情報を提供します。</span><span data-lang="zh">租房注意事项、垃圾分类、水电费缴纳方式等，提供日常生活相关信息。</span><span data-lang="en">We provide info on renting apartments, garbage disposal rules, utility payments, and more.</span></p><span class="card-arrow">→</span></a>
+    <a href="kyouiku.html" class="card reveal"><div class="card-icon">🎓</div><h3><span data-lang="ja">教育・日本語学習</span><span data-lang="zh">教育日语学习</span><span data-lang="en">Education Support</span></h3><p><span data-lang="ja">日本語教室の紹介、子どもの学校入学サポート、奨学金情報など、学びに関するご相談を承ります。</span><span data-lang="zh">日语教室介绍、子女入学支持、奖学金信息等，欢迎咨询学习相关问题。</span><span data-lang="en">We introduce Japanese classes, support school enrollment for children, and share scholarship information.</span></p><span class="card-arrow">→</span></a>
+    <a href="kinkyuu.html" class="card reveal"><div class="card-icon">🆘</div><h3><span data-lang="ja">緊急・トラブル対応</span><span data-lang="zh">紧急情况应对</span><span data-lang="en">Emergency Support</span></h3><p><span data-lang="ja">災害時の情報提供、犯罪被害への対応、緊急連絡先の案内など、困ったときに頼れる窓口です。</span><span data-lang="zh">灾害时信息提供、犯罪受害应对、紧急联系方式指引，遇到困难随时来找我们。</span><span data-lang="en">We provide disaster information, support for crime victims, and emergency contact guidance.</span></p><span class="card-arrow">→</span></a>
   </div>
 </section>
 
@@ -596,6 +471,15 @@
   const saved = localStorage.getItem('preferred-lang');
   if (saved) setLang(saved);
 
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('nav-links').classList.remove('open');
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
@@ -611,16 +495,6 @@
   }
 
   function toggleFaq(btn) { btn.closest('.faq-item').classList.toggle('open'); }
-  function toggleMenu() {
-  const btn = document.getElementById('hamburger');
-  const links = document.getElementById('nav-links');
-  btn.classList.toggle('open');
-  links.classList.toggle('open');
-}
-function closeMenu() {
-  document.getElementById('hamburger').classList.remove('open');
-  document.getElementById('nav-links').classList.remove('open');
-}
 </script>
 </body>
 </html>
